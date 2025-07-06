@@ -2,15 +2,16 @@ package auth
 
 import (
 	"errors"
+	"github.com/emanuel3k/Spotify-CLI/internal/services"
 	"net/http"
 	"os"
 	"time"
 )
 
 func GetCredentials() error {
-	clientId := os.Getenv(spotifyClientId)
-	urlCallback := os.Getenv(spotifyURLCallback)
-	clientSecret := os.Getenv(spotifyClientSecret)
+	clientId := os.Getenv(services.SpotifyClientId)
+	urlCallback := os.Getenv(services.SpotifyURLCallback)
+	clientSecret := os.Getenv(services.SpotifyClientSecret)
 
 	ch := make(chan string)
 	server := &http.Server{Addr: ":8080"}

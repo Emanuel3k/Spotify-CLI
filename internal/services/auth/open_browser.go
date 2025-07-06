@@ -2,6 +2,7 @@ package auth
 
 import (
 	"fmt"
+	"github.com/emanuel3k/Spotify-CLI/internal/services"
 	"net/url"
 	"os/exec"
 	"runtime"
@@ -14,7 +15,7 @@ func openBrowser(clientId, urlCallback *string) error {
 		"client_id":     {*clientId},
 		"response_type": {"code"},
 		"redirect_uri":  {*urlCallback},
-		"scope":         {scope},
+		"scope":         {services.Scope},
 	}
 
 	openUrl := baseUrl

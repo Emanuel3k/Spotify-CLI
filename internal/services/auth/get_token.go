@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/emanuel3k/Spotify-CLI/internal/domain"
+	"github.com/emanuel3k/Spotify-CLI/internal/services"
 	"net/http"
 	"net/url"
 	"os"
@@ -45,7 +46,7 @@ func getToken(clientId, clientSecret, urlCallback, code *string) error {
 		return fmt.Errorf("failed to decode token response: %w", err)
 	}
 
-	if err = os.Setenv(spotifyAccessToken, tokenRes.AccessToken); err != nil {
+	if err = os.Setenv(services.SpotifyAccessToken, tokenRes.AccessToken); err != nil {
 		return fmt.Errorf("failed to set access token in environment variable: %w", err)
 	}
 
